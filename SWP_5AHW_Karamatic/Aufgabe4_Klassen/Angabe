@@ -17,7 +17,7 @@ programmiere in Python:
  - man muss alle Objekte instanzieren können                        hab ich, mehr oder weniger
  - wieviele Mitarbeiter, Abteilungsleiter gibts in der Firma        hab ich
  - wieviel Abteilungen gibt es                                      hab ich
- - welche Abteilung hat die größte Mitarbeiterstärke
+ - welche Abteilung hat die größte Mitarbeiterstärke                hab ich
  - wie ist der Prozentanteil Frauen Männer
 
 Maximiere die Logik-Kapselung...Methoden und Datenstrukturen sollten in den passenden Klassen implementiert werden.

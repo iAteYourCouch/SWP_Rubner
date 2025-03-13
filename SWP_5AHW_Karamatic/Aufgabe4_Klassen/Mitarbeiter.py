@@ -13,7 +13,7 @@ class Department:
     def __init__(self, depName):
         self.depName = depName
         self.employees = []  # Eine Liste von Employee-Objekten
-#
+
     def add_employee(self, employee): #Hilfe
        self.employees.append(employee) #
 
@@ -49,29 +49,34 @@ def countDepHeads(department):
             c += 1
     print(f"Anzahl Abt.leiter in {department.depName}: {c}")
 
-def defineLargest(company):
-    c = []
-    x = 0
-    for dep in company.departments:
-        x += 1
-        c.append(x)
-        if c[countDepartments(company)] > c[countDepartments(company)+1] or c[countDepartments(company)-1] < c[countDepartments(company)]:
-            print(f"Grösste Abteilung: {dep}")
+def defineLargestDep(company):
+    depa = max(company.departments, key=lambda dep: len(dep.employees))
+    print(f"Grösste Abteilung: {depa.depName}")
+
+#def countGender(company): #idfk if this shit works
+#    a = 0
+#    m = 0
+#    for department in company.departments:
+#        a += len(department.employees)
+#    for department in company.departments:
+#        m += len(department.employees)
+
+#    g = ((a-m)/a)*100
+#    print(m)
 
 
-
-
-if __name__ == '__main__':
+def main():
     pon1 = Person("Julian", True)
     pon2 = Person("Juliana", False)
 
     eee1 = Employee("Sebastian", True, True)
-    eee2 = Employee("Martin", True, True)
+    eee2 = Employee("Martin", Kücken, True)
     eee3 = Employee("David", True, False)
     eee4 = Employee("Jakob", True, True)
     eee5 = Employee("Eva", False, False)
     eee6 = Employee("Sandra", False, True)
     eee7 = Employee("Gabriel", True, False)
+    eee8 = Employee("Manuel", True, False)
 
     dep1 = Department("IT")
     Department.add_employee(dep1, eee1)
@@ -89,8 +94,6 @@ if __name__ == '__main__':
     Company.add_department(comp1, dep2)
     Company.add_department(comp1, dep3)
 
-
-
     countDepartments(comp1)
 
     countWorkers(dep1)
@@ -99,6 +102,18 @@ if __name__ == '__main__':
     countWorkers(dep2)
     countWorkers(dep3)
 
-    defineLargest(comp1)
+    defineLargestDep(comp1)
 
+    # countGender(comp1)
+
+
+if __name__ == '__main__':
+    try:
+        main()
+
+    except NameError: #NameError: name 'Kücken' is not defined
+        print("\nSo nicht min' jung'!\n \___\n//  \\\n get stickbugged")
+
+    finally:
+        print("\nAlles Roger in Kambodscha")
 

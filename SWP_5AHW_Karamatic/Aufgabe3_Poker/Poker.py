@@ -1,5 +1,7 @@
 import random
 from contextlib import nullcontext
+from datetime import datetime
+import functools
 
 from Tools.scripts.reindent import errprint
 
@@ -82,8 +84,20 @@ def draw(card_list, hand_size):
         possibilities["pair"] += 1
     else:
         possibilities["high_card"] += 1
+        
+        
+def timer(func):
+    @functools.wraps(func)
+    def wrapper():
+        starttime = datetime.now()
+        func()
+        endtime = datetime.now()
+        timetaken = endtime - starttime
+        print(f"\n\nAusführung des Programms dauerte {timetaken}")
+    return wrapper
 
 
+@timer
 def main():
     cards = list(range(0, 52))
     draws = int(input("Anzahl der Ziehungen: ")) #todo input für draws, keine fixwerte(außer main)
@@ -106,5 +120,17 @@ if __name__ == "__main__":
     except ValueError:
         print("\nABC-Bär? Hallo?\n \___\n//  \\\n get stickbugged")
 
+    except AttributeError:
+        print("Wahrscheinlich irgwas mit DateTime")
+
+    except KeyboardInterrupt:
+        print("Keinen Bock mehr")
+
     finally:
         print("\nIch bin ein braver Schüler")
+
+
+#lamda
+#x = 10
+#sum = lambda y: x+y
+#print(sum(4))
